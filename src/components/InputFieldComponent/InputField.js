@@ -1,40 +1,18 @@
-import React from "react";
-import {useState } from "react";
-import { useRef } from 'react';
+import React, { useState } from "react";
 
 import "./InputField.scss";
 
-export default function InputField() {
-  const [file,  setFile] = useState("");
-  const reference = useRef("inputReference");
-     
-  const handleChange = (e) =>{
-    setFile(URL.createObjectURL(e.target.files[0]))
-  }
+export default function InputField(props) {
+  const [fieldValue, setValue] = useState(props.message.value);
 
-  function fileUploadAction() {
-    reference.current.click();
+  function handleChange(event) {
+    setValue(event.target.value);
   }
 
   return (
     <div className="InputField">
-        <div>
-          <img className="display-image" alt="avator" src={file}/>
-          <div className="image-info">
-            <div>User Name</div>
-            <a href="/" className="view-link">View Resume</a>
-          </div>
-          
-
-          <button onClick={fileUploadAction} className="upload-btn">Upload Resume</button>
-          <input
-            style={{display:'none'}}
-            type={"file"}
-            ref={reference}
-            onChange={handleChange}
-          />
-          <br/>
-        </div>
+        <label>{props.message.key}</label>
+        <input type="text" value={fieldValue} onChange={handleChange}/>
     </div>
   );
 }
