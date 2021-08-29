@@ -1,0 +1,22 @@
+.InputField {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    .display-image {
+        width: auto;
+        height: 60px;
+        border-radius: 50%;
+    }
+    .image-info {
+        margin-left: 20px;
+        width: 100px;
+        display: inline-block;
+        .view-link {
+            font-size: 10px;
+        }
+    }
+    .upload-btn {
+        float: right;
+        border: 2px solid blue;
+        color: blue;
+    }
+}

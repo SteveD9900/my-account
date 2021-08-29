@@ -1,0 +1,21 @@
+.NavBar {
+    width: 100%;
+    height: 40px;
+    background-color: white;
+    .title-font {
+        font-size: 20px;
+    }
+    .edit-btn {
+        float: right;
+        color: white;
+        background: blue;
+        height: 30px;
+        width: 55px;
+        font-weight: bold;
+        border: 1px solid #03a9f4;
+        border-radius: 4px;
+    }
+    .edit-btn:hover {
+        background: #132fcf;
+    }
+}
