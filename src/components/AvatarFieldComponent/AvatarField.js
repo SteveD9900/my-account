@@ -4,7 +4,8 @@ import { useRef } from 'react';
 
 import "./AvatarField.scss";
 
-export default function AvatarField() {
+export default function AvatarField(props) {
+  const [userName] = useState(props.content.value);
   const [file,  setFile] = useState("");
   const reference = useRef("inputReference");
      
@@ -21,7 +22,7 @@ export default function AvatarField() {
         <div>
           <img className="display-image" alt="avator" src={file}/>
           <div className="image-info">
-            <div>User Name</div>
+            <div>{userName}</div>
             <a href="/" className="view-link">View Resume</a>
           </div>
           

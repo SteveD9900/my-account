@@ -1,8 +1,7 @@
 export const accountData = [
     {
         key: "First Name",
-        value: "Bruce",
-        placeholder: ""
+        value: "Bruce"
     },
     {
         key: "Last Name",

@@ -10,7 +10,7 @@ export default function MainPanel() {
 
   return (
     <Container>
-        <AvatarField/>
+        <AvatarField content={accountData[0]}/>
         <div className="flex-container">
             {accountData.map((detail, i)=> 
               <div key={i}>
