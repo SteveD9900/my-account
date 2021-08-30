@@ -1,11 +1,10 @@
 import React from "react";
-import {useState } from "react";
-import { useRef } from 'react';
+import { useState, useRef } from "react";
 
 import "./AvatarField.scss";
 
 export default function AvatarField(props) {
-  const [userName] = useState(props.content.value);
+  const [userName] = useState(props.content);
   const [file,  setFile] = useState("");
   const reference = useRef("inputReference");
      

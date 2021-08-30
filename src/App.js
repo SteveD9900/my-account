@@ -1,4 +1,4 @@
-import Account from "./container/AccountDetails/Account";
+import Account from "./container/AccountPage/Account";
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

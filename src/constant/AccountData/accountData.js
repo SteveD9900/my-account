@@ -1,42 +1,52 @@
 export const accountData = [
     {
-        key: "First Name",
+        key: "firstname",
+        title: "First Name",
         value: "Bruce"
     },
     {
-        key: "Last Name",
+        key: "lastname",
+        title: "Last Name",
         value: "Banner"
     },
     {
-        key: "Email",
+        key: "email",
+        title: "Email",
         value: "bruce.banner@marvel.com"
     },
     {
-        key: "Phone",
+        key: "phone",
+        title: "Phone",
         value: "0200000000"
     },
     {
-        key: "Postcode",
+        key: "postcode",
+        title: "Postcode",
         value: "2000"
     },
     {
-        key: "State",
+        key: "state",
+        title: "State",
         value: ""
     },
     {
-        key: "Company Name",
+        key: "companyname",
+        title: "Company Name",
         value: "Marvel"
     },
     {
-        key: "ABN",
+        key: "abn",
+        title: "ABN",
         value: "12 123 123 123"
     },
     {
         key: "Hourly Rate",
+        title: "hourlyrate",
         value: 379.00
     },
     {
         key: "Birth Date",
+        title: "birthdate",
         value: "1970-05-31"
     }
 ];

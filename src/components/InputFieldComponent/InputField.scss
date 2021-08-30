@@ -1,5 +1,13 @@
 .InputField {
-    .state-selector {
-        padding: 3px 8px;
+    position: relative;
+    .error-input {
+        border: 1px solid red;
+    }
+    .error-message {
+        color: red;
+        font-size: 12px;
+        position: absolute;
+        bottom: -24px;
+        left: 0;
     }
 }
