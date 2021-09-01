@@ -23,16 +23,25 @@ export default function InputField(props) {
   }
 
   if (props.message.key === "state") {
-    return (
-        <Dropdown optioninfo={props.message} />
-    );
+    return <Dropdown active={props.enable} optioninfo={props.message} />;
   }
 
   return (
     <div className="InputField">
-        <label>{props.message.title}</label>
-        <input className={`${emptyField ? "error-input" : ""}`} type="text" value={fieldValue} onChange={handleChange} onBlur={validateField}/>
-        { emptyField ? <span className="error-message">your {props.message.key} is required</span> : null }
+      <label>{props.message.title}</label>
+      <input
+        disabled={props.enable ? "" : "disabled"}
+        className={`${emptyField ? "error-input" : ""}`}
+        type="text"
+        value={fieldValue}
+        onChange={handleChange}
+        onBlur={validateField}
+      />
+      {emptyField ? (
+        <span className="error-message">
+          your {props.message.key} is required
+        </span>
+      ) : null}
     </div>
   );
 }

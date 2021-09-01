@@ -7,5 +7,5 @@ test('renders Dropdown', () => {
     title: "State",
     value: "NSW"
   };
-  render(<Dropdown optioninfo={info}/>);
+  render(<Dropdown active={true} optioninfo={info}/>);
 });

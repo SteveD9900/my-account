@@ -7,5 +7,5 @@ test('renders InputField', () => {
     title: "Last Name",
     value: "Banner"
   };
-  render(<InputField message={detail}/>);
+  render(<InputField enable={true} message={detail}/>);
 });

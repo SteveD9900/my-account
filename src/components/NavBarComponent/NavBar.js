@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbar, Container } from 'react-bootstrap';
 import "./NavBar.scss";
 
 export default function NavBar(props) {
+  const [editable, setEdit] = useState("false");
+  const [btnText, setBtnText] = useState("Edit");
+
+  const toggleEditBtn = () => {
+    setEdit(!editable);
+    if (editable) {
+      setBtnText("Save");
+    } else {
+      setBtnText("Edit");
+    }
+    props.onEditStatus(editable);
+  }
 
   return (
     <Navbar className="NavBar">
@@ -11,7 +23,7 @@ export default function NavBar(props) {
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
-                <button className="edit-btn">Edit</button>
+                <button onClick={toggleEditBtn} className="edit-btn">{btnText}</button>
             </Navbar.Text>
             </Navbar.Collapse>
         </Container>
