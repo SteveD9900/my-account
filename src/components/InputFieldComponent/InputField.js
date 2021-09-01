@@ -5,21 +5,73 @@ import "./InputField.scss";
 
 export default function InputField(props) {
   const [fieldValue, setFieldValue] = useState(props.message.value);
-  const [emptyField, setEmptyField] = useState(false);
+  const [errorState, setErrorState] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   function handleChange(event) {
-    setEmptyField(false);
+    setErrorState(false);
     setFieldValue(event.target.value);
   }
 
-  function validateField() {
-    if (props.message.key !== "companyname" && props.message.key !== "abn") {
-      if (fieldValue === "") {
-        setEmptyField(true);
-      } else {
-        setEmptyField(false);
-      }
+  function validateField(event) {
+    switch (props.message.key) {
+      case "email":
+        if (!validateEmail(event.target.value)) {
+          setErrorState(true);
+          setErrorMessage("email address format is incorrect!");
+        }
+        break;
+      case "abn":
+        if (!validateAbn(event.target.value) && fieldValue !== "") {
+          setErrorState(true);
+          setErrorMessage("ABN number format is incorrect!");
+        }
+        break;
+      case "phone":
+        if (!validatePhone(event.target.value)) {
+          setErrorState(true);
+          setErrorMessage("phone format is incorrect!");
+        }
+        break;
+      case "postcode":
+        if (!validatePostcode(event.target.value)) {
+          setErrorState(true);
+          setErrorMessage("postcode format is incorrect!");
+        }
+        break;
+      default:
+        break;
     }
+
+    checkEmpty();
+  }
+
+  function checkEmpty() {
+    if (fieldValue === "" && props.message.required) {
+      setErrorState(true);
+      setErrorMessage("your " + props.message.key + " is required");
+    }
+  }
+
+  function validateEmail(email) {
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
+  function validatePhone(phone) {
+    const re = /^\D*0(\D*\d){9}\D*$/;
+    return re.test(String(phone).toLowerCase());
+  }
+
+  function validateAbn(abn) {
+    const re = /^(\d *?){11}/;
+    return re.test(String(abn).toLowerCase());
+  }
+
+  function validatePostcode(number) {
+    const re = /^[0-9]{4}$/;
+    return re.test(String(number).toLowerCase());
   }
 
   if (props.message.key === "state") {
@@ -31,16 +83,14 @@ export default function InputField(props) {
       <label>{props.message.title}</label>
       <input
         disabled={props.enable ? "" : "disabled"}
-        className={`${emptyField ? "error-input" : ""}`}
+        className={`${errorState ? "error-input" : ""}`}
         type="text"
         value={fieldValue}
         onChange={handleChange}
         onBlur={validateField}
       />
-      {emptyField ? (
-        <span className="error-message">
-          your {props.message.key} is required
-        </span>
+      {errorState ? (
+        <span className="error-message">{errorMessage}</span>
       ) : null}
     </div>
   );

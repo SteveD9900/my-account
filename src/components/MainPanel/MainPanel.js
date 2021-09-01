@@ -9,10 +9,13 @@ import "./MainPanel.scss";
 
 export default function MainPanel(props) {
   var fullName = accountHelper.getFullName(accountData);
+
+  function handleSubmit() {}
+
   return (
     <Container>
         <AvatarField enable={props.editable} content={fullName}/>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="flex-container">
               {accountData.map((detail, i)=> 
                 <div key={i}>
