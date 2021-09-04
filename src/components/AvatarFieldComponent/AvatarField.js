@@ -5,7 +5,7 @@ import "./AvatarField.scss";
 
 export default function AvatarField(props) {
   const [userName] = useState(props.content);
-  const [file,  setFile] = useState("");
+  const [file, setFile] = useState(props.imgUrl);
   const reference = useRef("inputReference");
      
   const handleChange = (e) =>{

@@ -48,14 +48,14 @@ export const accountData = [
         required: false
     },
     {
-        key: "Hourly Rate",
-        title: "hourlyrate",
+        key: "hourlyrate",
+        title: "Hourly Rate",
         value: 379.00,
         required: true
     },
     {
-        key: "Birth Date",
-        title: "birthdate",
+        key: "birthdate",
+        title: "Birth Date",
         value: "1970-05-31",
         required: true
     }

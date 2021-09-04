@@ -11,8 +11,12 @@ function getFullName(accountData) {
     });
     return firstName + " " + lastName;
 }
+function getImageUrl(accountImg) {
+    return accountImg.imgUrl;
+}
 const accountHelper = {
-    getFullName
+    getFullName,
+    getImageUrl
 };
 
 export default accountHelper;

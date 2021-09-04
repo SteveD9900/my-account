@@ -10,11 +10,13 @@
         margin-left: 20px;
         width: 100px;
         display: inline-block;
+        vertical-align: middle;
         .view-link {
             font-size: 10px;
         }
     }
     .upload-btn {
+        margin-top: 12px;
         float: right;
         border: 2px solid blue;
         color: blue;

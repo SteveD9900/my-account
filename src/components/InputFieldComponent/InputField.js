@@ -39,6 +39,9 @@ export default function InputField(props) {
           setErrorMessage("postcode format is incorrect!");
         }
         break;
+        case "hourlyrate":
+          setFieldValue(showTwoDigits(event.target.value));
+          break;
       default:
         break;
     }
@@ -72,6 +75,10 @@ export default function InputField(props) {
   function validatePostcode(number) {
     const re = /^[0-9]{4}$/;
     return re.test(String(number).toLowerCase());
+  }
+
+  function showTwoDigits(hourlyrate) {
+    return parseFloat(hourlyrate).toFixed(2);
   }
 
   if (props.message.key === "state") {
