@@ -1,10 +1,6 @@
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 
-// import safeSliceReduer from "../store/features/safe/safeSlice";
-
-// const initStore = configureStore({ reducer: { safe: safeSliceReduer } });
-
 export const findByTestAttr = (wrapper, val) => {
   return wrapper.find(`[data-test="${val}"]`);
 };

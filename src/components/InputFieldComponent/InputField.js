@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Dropdown from "../DropdownComponent/Dropdown";
 
 import "./InputField.scss";
@@ -7,6 +7,23 @@ export default function InputField(props) {
   const [fieldValue, setFieldValue] = useState(props.message.value);
   const [errorState, setErrorState] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [inputType, setInputType] = useState("");
+
+  useEffect(() => {
+    getInputType(props.message.key);
+  })
+
+  function getInputType(key) {
+    if (key === "birthdate") {
+      setInputType("date");
+    } else if (key === "hourlyrate" || key === "phone" || key === "postcode") {
+      setInputType("number");
+    } else if (key === "email") {
+      setInputType("email");
+    } else {
+      setInputType("text");
+    }
+  }
 
   function handleChange(event) {
     setErrorState(false);
@@ -39,9 +56,9 @@ export default function InputField(props) {
           setErrorMessage("postcode format is incorrect!");
         }
         break;
-        case "hourlyrate":
-          setFieldValue(showTwoDigits(event.target.value));
-          break;
+      case "hourlyrate":
+        setFieldValue(showTwoDigits(event.target.value));
+        break;
       default:
         break;
     }
@@ -91,7 +108,7 @@ export default function InputField(props) {
       <input
         disabled={props.enable ? "" : "disabled"}
         className={`${errorState ? "error-input" : ""}`}
-        type="text"
+        type={inputType}
         value={fieldValue}
         onChange={handleChange}
         onBlur={validateField}

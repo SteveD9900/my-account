@@ -20,7 +20,7 @@ export default function MainPanel(props) {
         <form onSubmit={handleSubmit}>
           <div className="flex-container">
               {accountData.map((detail, i)=> 
-                <div key={i}>
+                <div key={i} className={detail.key}>
                   <InputField enable={props.editable} message={detail} />
                 </div>
               )}

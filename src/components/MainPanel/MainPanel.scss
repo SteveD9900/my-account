@@ -25,6 +25,12 @@
         width: 100%;
         margin: 1%;
         line-height: 28px;
+        
+    }
+    .flex-container {
+        .postcode, .state {
+            width: 48%;
+        }
     }
 
 }
