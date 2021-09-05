@@ -26,7 +26,7 @@ export default function AvatarField(props) {
           </div>
           
 
-          <button onClick={fileUploadAction} className="upload-btn">Upload Resume</button>
+          <button onClick={fileUploadAction} className="upload-btn">Upload Avatar</button>
           <input
             style={{display:'none'}}
             type={"file"}

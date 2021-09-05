@@ -14,7 +14,7 @@ export default function Accounts() {
   }
 
   return (
-    <div className="Account" data-test='component-safe'>
+    <div className="Account" data-test="component-safe">
       <NavBar onEditStatus={toggleEditBtn}/>
       <MainPanel editable={enableEdit} />
     </div>

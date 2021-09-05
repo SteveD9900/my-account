@@ -13,7 +13,7 @@ export default function MainPanel(props) {
   var defaultUrl = accountHelper.getImageUrl(accountImg);
 
   function handleSubmit(event) {
-    
+    // save the form changes
   }
 
   return (
