@@ -16,7 +16,7 @@ export default function InputField(props) {
   function getInputType(key) {
     if (key === "birthdate") {
       setInputType("date");
-    } else if (key === "hourlyrate" || key === "phone" || key === "postcode") {
+    } else if (key === "hourlyrate" || key === "postcode") {
       setInputType("number");
     } else if (key === "email") {
       setInputType("email");

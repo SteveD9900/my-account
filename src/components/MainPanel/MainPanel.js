@@ -12,7 +12,9 @@ export default function MainPanel(props) {
   var fullName = accountHelper.getFullName(accountData);
   var defaultUrl = accountHelper.getImageUrl(accountImg);
 
-  function handleSubmit() {}
+  function handleSubmit(event) {
+    
+  }
 
   return (
     <Container>
@@ -26,6 +28,7 @@ export default function MainPanel(props) {
               )}
           </div>
         </form>
+        <input style={{display:'none'}} type="submit" value="Submit" />
     </Container>
   );
 }

@@ -7,7 +7,7 @@ import "./Account.scss";
 
 
 export default function Accounts() {
-  const [enableEdit, setEnableEdit] = useState(false);
+  const [enableEdit, setEnableEdit] = useState();
 
   function toggleEditBtn(editableValue) {
     setEnableEdit(editableValue);
