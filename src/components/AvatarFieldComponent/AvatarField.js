@@ -9,7 +9,9 @@ export default function AvatarField(props) {
   const reference = useRef("inputReference");
      
   const handleChange = (e) =>{
-    setFile(URL.createObjectURL(e.target.files[0]))
+    if (e.target.files.length !== 0) {
+      setFile(URL.createObjectURL(e.target.files[0]));
+    }
   }
 
   function fileUploadAction() {
@@ -32,6 +34,7 @@ export default function AvatarField(props) {
             type={"file"}
             ref={reference}
             onChange={handleChange}
+            accept="image/*"
           />
           <br/>
         </div>

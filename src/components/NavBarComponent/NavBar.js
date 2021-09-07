@@ -15,13 +15,13 @@ export default function NavBar(props) {
   }
 
   function resetUpdate() {
+    props.onCancelUpdates();
     setEdit(false);
-    // reverse changes
   }
 
   const saveChanges = () => {
-    // setEdit(false);
-    //trigger form submit
+    props.onSaveChanges();
+    setEdit(false);
   };
 
   return (
