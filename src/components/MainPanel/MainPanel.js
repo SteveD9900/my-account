@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Container } from 'react-bootstrap';
 import AvatarField from "../AvatarFieldComponent/AvatarField";
 import InputField from "../InputFieldComponent/InputField";
@@ -9,17 +9,23 @@ import accountHelper from "../../utils/helper.js";
 import "./MainPanel.scss";
 
 export default function MainPanel(props) {
-  var fullName = accountHelper.getFullName(accountData);
-  var defaultUrl = accountHelper.getImageUrl(accountImg);
+  const fullName = accountHelper.getFullName(accountData);
+  const defaultUrl = accountHelper.getImageUrl(accountImg);
+  const myFormRef = useRef(null);
 
   function handleSubmit(event) {
+    event.preventDefault();
     // save the form changes
+    var formData = new FormData(myFormRef.current);
+    for(var pair of formData.entries()) {
+      console.log(pair[0]+ ', '+ pair[1]);
+    }
   }
 
   return (
     <Container>
         <AvatarField imgUrl={defaultUrl} enable={props.editable} content={fullName}/>
-        <form onSubmit={handleSubmit}>
+        <form method="post" ref={myFormRef} onSubmit={handleSubmit}>
           <div className="flex-container">
               {accountData.map((detail, i)=> 
                 <div key={i} className={detail.key}>
@@ -27,8 +33,8 @@ export default function MainPanel(props) {
                 </div>
               )}
           </div>
+          <input style={{display:'none'}} type="submit" value="Submit" />
         </form>
-        <input style={{display:'none'}} type="submit" value="Submit" />
     </Container>
   );
 }

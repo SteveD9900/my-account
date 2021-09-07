@@ -20,7 +20,7 @@ export default function NavBar(props) {
   }
 
   const saveChanges = () => {
-    setEdit(false);
+    // setEdit(false);
     //trigger form submit
   };
 
