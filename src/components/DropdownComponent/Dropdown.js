@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 
 import "./Dropdown.scss";
 
 export default function Dropdown(props) {
+  const [selectedState, updateState] = useState(props.optionInfo.value);
+  useEffect(() => {
+    !props.active && updateState(props.optionInfo.value);
+  }, [props.optionInfo.value, props.active]);
+
   const options = [
     { key: 1, text: "NSW", value: "NSW" },
     { key: 2, text: "VIC", value: "VIC" },
@@ -13,13 +18,21 @@ export default function Dropdown(props) {
     { key: 6, text: "NT", value: "NT" },
   ];
 
+  function handleChange(e) {
+    updateState(e.target.value);
+    props.setStateValue(e.target.value);
+  }
+
   return (
     <div className="Dropdown">
-      <label>{props.optioninfo.key}</label>
+      <label>{props.optionInfo.title}</label>
       <Form.Select
+        name={props.optionInfo.key}
         disabled={ !props.active }
         className="state-selector"
         aria-label="Default select example"
+        value={selectedState}
+        onChange={handleChange}
       >
         <option>Select State</option>
         {options.map((state) => (

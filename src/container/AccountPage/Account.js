@@ -19,9 +19,9 @@ export default function Accounts() {
     submitRef.current.click();
   }
 
-  function updateFormData(testData) {
+  function updateFormData(newRawData) {
     const newFormData = {};
-    for (var [key, value] of testData.entries()) {
+    for (var [key, value] of newRawData.entries()) {
       const newFieldData = { ...formData[key], value: value };
       newFormData[key] = newFieldData;
     }

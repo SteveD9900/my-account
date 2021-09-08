@@ -1,14 +1,13 @@
 import React, {
   useState,
-  useEffect,
-  forwardRef,
+  useEffect
 } from "react";
 import Dropdown from "../DropdownComponent/Dropdown";
 import inputValidation from "../../utils/InputValidation.js";
 
 import "./InputField.scss";
 
-const InputField = forwardRef((props, ref) => {
+export default function InputField(props) {
   const [fieldValue, setFieldValue] = useState(props.message.value);
   const [errorState, setErrorState] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -86,8 +85,12 @@ const InputField = forwardRef((props, ref) => {
     }
   }
 
+  function setStateOption(value) {
+    setFieldValue(value);
+  }
+
   if (props.message.key === "state") {
-    return <Dropdown active={props.enable} optioninfo={props.message} />;
+    return <Dropdown setStateValue={setStateOption} active={props.enable} optionInfo={props.message} />;
   }
 
   return (
@@ -96,7 +99,6 @@ const InputField = forwardRef((props, ref) => {
       <input
         disabled={props.enable ? "" : "disabled"}
         className={`${errorState ? "error-input" : ""}`}
-        id={props.message.key}
         name={props.message.key}
         type={inputType}
         value={fieldValue}
@@ -108,6 +110,4 @@ const InputField = forwardRef((props, ref) => {
       ) : null}
     </div>
   );
-});
-
-export default InputField;
+}

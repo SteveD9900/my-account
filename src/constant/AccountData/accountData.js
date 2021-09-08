@@ -32,7 +32,7 @@ export const accountData = {
     state: {
         key: "state",
         title: "State",
-        value: "",
+        value: "NSW",
         required: true
     },
     companyname: {
