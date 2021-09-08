@@ -33,7 +33,7 @@ export default function Accounts() {
       <NavBar onEditStatus={toggleEditBtn} onSaveChanges={triggerSubmit} />
       <MainPanel
         onSumbitChange={updateFormData}
-        data={content}
+        panelData={content}
         ref={submitRef}
         editable={enableEdit}
       />

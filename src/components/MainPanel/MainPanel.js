@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef } from "react";
+import React, { useRef, forwardRef, useState, useEffect } from "react";
 import { Container } from 'react-bootstrap';
 import AvatarField from "../AvatarFieldComponent/AvatarField";
 import InputField from "../InputFieldComponent/InputField";
@@ -8,9 +8,13 @@ import accountHelper from "../../utils/helper.js";
 import "./MainPanel.scss";
 
 const MainPanel = forwardRef((props, ref) => {
-  const fullName = accountHelper.getFullName(props.data);
+  const [fullName, setFullName] = useState(accountHelper.getFullName(props.panelData));
   const defaultUrl = accountHelper.getImageUrl(accountImg);
   const myFormRef = useRef();
+
+  useEffect(() => {
+    setFullName(accountHelper.getFullName(props.panelData));
+  }, [props.panelData]);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -23,7 +27,7 @@ const MainPanel = forwardRef((props, ref) => {
         <AvatarField imgUrl={defaultUrl} enable={props.editable} content={fullName}/>
         <form method="post" ref={myFormRef} onSubmit={handleSubmit}>
           <div className="flex-container">
-              {props.data.map((detail, i)=> 
+              {props.panelData.map((detail, i)=> 
                 <div key={i} className={detail.key}>
                   <InputField enable={props.editable} message={detail} />
                 </div>

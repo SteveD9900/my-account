@@ -1,10 +1,10 @@
 import React from "react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import "./AvatarField.scss";
 
 export default function AvatarField(props) {
-  const [userName] = useState(props.content);
+  const [userName, setUserName] = useState(props.content);
   const [file, setFile] = useState(props.imgUrl);
   const reference = useRef("inputReference");
      
@@ -13,6 +13,10 @@ export default function AvatarField(props) {
       setFile(URL.createObjectURL(e.target.files[0]));
     }
   }
+
+  useEffect(() => {
+    setUserName(props.content);
+  }, [props.content]);
 
   function fileUploadAction() {
     reference.current.click();

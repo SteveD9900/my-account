@@ -16,7 +16,7 @@ test('renders MainPanel', () => {
         required: true
     }
   ];
-  render(<MainPanel editable={true} data={accountData}/>);
+  render(<MainPanel editable={true} panelData={accountData}/>);
   const linkElement = screen.getByText(/First Name/i);
   expect(linkElement).toBeInTheDocument();
 });
