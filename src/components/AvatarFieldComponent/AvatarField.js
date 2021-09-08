@@ -6,7 +6,7 @@ import "./AvatarField.scss";
 export default function AvatarField(props) {
   const [userName, setUserName] = useState(props.content);
   const [file, setFile] = useState(props.imgUrl);
-  const reference = useRef("inputReference");
+  const inputRef = useRef(null);
      
   const handleChange = (e) =>{
     if (e.target.files.length !== 0) {
@@ -19,7 +19,7 @@ export default function AvatarField(props) {
   }, [props.content]);
 
   function fileUploadAction() {
-    reference.current.click();
+    inputRef.current.click();
   }
 
   return (
@@ -36,7 +36,7 @@ export default function AvatarField(props) {
           <input
             style={{display:'none'}}
             type={"file"}
-            ref={reference}
+            ref={inputRef}
             onChange={handleChange}
             accept="image/*"
           />

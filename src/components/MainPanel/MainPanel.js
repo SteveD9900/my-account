@@ -10,7 +10,7 @@ import "./MainPanel.scss";
 const MainPanel = forwardRef((props, ref) => {
   const [fullName, setFullName] = useState(accountHelper.getFullName(props.panelData));
   const defaultUrl = accountHelper.getImageUrl(accountImg);
-  const myFormRef = useRef();
+  const myFormRef = useRef(null);
 
   useEffect(() => {
     setFullName(accountHelper.getFullName(props.panelData));
@@ -18,7 +18,7 @@ const MainPanel = forwardRef((props, ref) => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    var formData = new FormData(myFormRef.current);
+    const formData = new FormData(myFormRef.current);
     props.onSumbitChange(formData);
   }
 

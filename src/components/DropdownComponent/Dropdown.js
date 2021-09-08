@@ -4,9 +4,9 @@ import { Form } from "react-bootstrap";
 import "./Dropdown.scss";
 
 export default function Dropdown(props) {
-  const [selectedState, updateState] = useState(props.optionInfo.value);
+  const [selectedState, setSelectedState] = useState(props.optionInfo.value);
   useEffect(() => {
-    !props.active && updateState(props.optionInfo.value);
+    !props.active && setSelectedState(props.optionInfo.value);
   }, [props.optionInfo.value, props.active]);
 
   const options = [
@@ -19,7 +19,7 @@ export default function Dropdown(props) {
   ];
 
   function handleChange(e) {
-    updateState(e.target.value);
+    setSelectedState(e.target.value);
     props.setStateValue(e.target.value);
   }
 

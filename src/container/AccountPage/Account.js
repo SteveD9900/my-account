@@ -8,8 +8,8 @@ import "./Account.scss";
 
 export default function Accounts() {
   const [formData, setFormData] = useState(accountData);
-  const submitRef = useRef();
-  const [enableEdit, setEnableEdit] = useState();
+  const submitRef = useRef(null);
+  const [enableEdit, setEnableEdit] = useState(false);
 
   function toggleEditBtn(editableValue) {
     setEnableEdit(editableValue);
