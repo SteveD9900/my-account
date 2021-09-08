@@ -15,7 +15,6 @@ export default function NavBar(props) {
   }
 
   function resetUpdate() {
-    props.onCancelUpdates();
     setEdit(false);
   }
 

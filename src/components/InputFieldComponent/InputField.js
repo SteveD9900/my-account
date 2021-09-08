@@ -1,4 +1,8 @@
-import React, { useState, useEffect, forwardRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  forwardRef,
+} from "react";
 import Dropdown from "../DropdownComponent/Dropdown";
 import inputValidation from "../../utils/InputValidation.js";
 
@@ -11,8 +15,13 @@ const InputField = forwardRef((props, ref) => {
   const [inputType, setInputType] = useState("");
 
   useEffect(() => {
+    !props.enable && setFieldValue(props.message.value);
+    setErrorState(false);
+  }, [props.message.value, props.enable]);
+
+  useEffect(() => {
     getInputType(props.message.key);
-  })
+  }, [props.message.key]);
 
   function getInputType(key) {
     if (key === "birthdate") {
@@ -40,7 +49,10 @@ const InputField = forwardRef((props, ref) => {
         }
         break;
       case "abn":
-        if (!inputValidation.validateAbn(event.target.value) && fieldValue !== "") {
+        if (
+          !inputValidation.validateAbn(event.target.value) &&
+          fieldValue !== ""
+        ) {
           setErrorState(true);
           setErrorMessage("ABN number format is incorrect!");
         }
@@ -52,7 +64,7 @@ const InputField = forwardRef((props, ref) => {
         }
         break;
       case "postcode":
-        if (!inputValidation.InputFieldvalidatePostcode(event.target.value)) {
+        if (!inputValidation.validatePostcode(event.target.value)) {
           setErrorState(true);
           setErrorMessage("postcode format is incorrect!");
         }
@@ -96,6 +108,6 @@ const InputField = forwardRef((props, ref) => {
       ) : null}
     </div>
   );
-})
+});
 
 export default InputField;

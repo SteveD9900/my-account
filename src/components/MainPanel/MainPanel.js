@@ -2,23 +2,20 @@ import React, { useRef, forwardRef } from "react";
 import { Container } from 'react-bootstrap';
 import AvatarField from "../AvatarFieldComponent/AvatarField";
 import InputField from "../InputFieldComponent/InputField";
-import { accountData } from "../../constant/AccountData/index";
 import { accountImg } from "../../constant/AccountImage/index";
 import accountHelper from "../../utils/helper.js";
 
 import "./MainPanel.scss";
 
 const MainPanel = forwardRef((props, ref) => {
-  const fullName = accountHelper.getFullName(accountData);
+  const fullName = accountHelper.getFullName(props.data);
   const defaultUrl = accountHelper.getImageUrl(accountImg);
   const myFormRef = useRef();
 
   function handleSubmit(event) {
     event.preventDefault();
     var formData = new FormData(myFormRef.current);
-    for(var pair of formData.entries()) {
-      console.log(pair[0]+ ', '+ pair[1]);
-    }
+    props.onSumbitChange(formData);
   }
 
   return (
@@ -26,7 +23,7 @@ const MainPanel = forwardRef((props, ref) => {
         <AvatarField imgUrl={defaultUrl} enable={props.editable} content={fullName}/>
         <form method="post" ref={myFormRef} onSubmit={handleSubmit}>
           <div className="flex-container">
-              {accountData.map((detail, i)=> 
+              {props.data.map((detail, i)=> 
                 <div key={i} className={detail.key}>
                   <InputField enable={props.editable} message={detail} />
                 </div>

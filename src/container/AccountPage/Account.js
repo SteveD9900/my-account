@@ -2,10 +2,12 @@ import React, { useState, useRef } from "react";
 
 import NavBar from "../../components/NavBarComponent/NavBar";
 import MainPanel from "../../components/MainPanel/MainPanel";
+import { accountData } from "../../constant/AccountData/index";
 
 import "./Account.scss";
 
 export default function Accounts() {
+  const [formData, setFormData] = useState(accountData);
   const submitRef = useRef();
   const [enableEdit, setEnableEdit] = useState();
 
@@ -17,18 +19,24 @@ export default function Accounts() {
     submitRef.current.click();
   }
 
-  function triggerReset() {
-    console.log("reverse changes");
+  function updateFormData(testData) {
+    const newFormData = {};
+    for (var [key, value] of testData.entries()) {
+      const newFieldData = { ...formData[key], value: value };
+      newFormData[key] = newFieldData;
+    }
+    setFormData(newFormData);
   }
-
+  const content = Object.values(formData);
   return (
     <div className="Account" data-test="component-safe">
-      <NavBar
-        onEditStatus={toggleEditBtn}
-        onSaveChanges={triggerSubmit}
-        onCancelUpdates={triggerReset}
+      <NavBar onEditStatus={toggleEditBtn} onSaveChanges={triggerSubmit} />
+      <MainPanel
+        onSumbitChange={updateFormData}
+        data={content}
+        ref={submitRef}
+        editable={enableEdit}
       />
-      <MainPanel ref={submitRef} editable={enableEdit} />
     </div>
   );
 }
