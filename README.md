@@ -1,6 +1,4 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a User Account Details Page. The default status of this page is read-only. The user is able to edit the form details by clicking the Edit button which is on the right side within the top navbar. Each field has its own input validation rule. Besides, all the fields are required, except Company Name and ABN. All value changes can be saved, once the user clicks the Save button. However, the value will be reversed to its initial value, if the Left Arrow button which is on the top left-hand side is triggered. In addition, The avatar image can be replaced by uploading a new image with the Upload Avatar button. Lastly, there is a specific UI layout for the mobile device screens.
 
 ## Available Scripts
 
